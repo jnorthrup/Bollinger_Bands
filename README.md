@@ -1,4 +1,6 @@
 # Bollinger_Bands
+Adapted from https://github.com/NickMonzillo/Bollinger_Bands for COSC445 final project.
+
 An algorithmic trading strategy written in C++.
 
 This program runs an algorithmic trading strategy that utilizes Bollinger Bands to buy and sell shares.
