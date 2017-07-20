@@ -15,6 +15,8 @@ using namespace std;
 void Performance::write_file(vector<vector<float>> input_vec)
 //Writes a vector of floats into a .txt file. Values separated by \n.
 {
+    cout << "writing: " << ofname << endl;
+
     ofstream outputFile(ofname);
     if (!outputFile.good()) {
 
@@ -30,7 +32,7 @@ void Performance::write_file(vector<vector<float>> input_vec)
     }
 }
 
-float Performance::sharpe_ratio( )
+float Performance::sharpe_ratio()
 //Calculates the Sharpe Ratio for the simulation.
 {
     vector<float> risk_free_data = read_csv(ifname);

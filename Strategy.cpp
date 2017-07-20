@@ -80,6 +80,7 @@ void Strategy::buy(int num_shares,float price)
 void Strategy::run(float std_devs,int num_prices)
 	//Runs the trading strategy.
 {
+	cout << "input file: " << ifname << endl;
  	price_data = read_csv(ifname);
 	signal = 0;
 	auto prev_signal = 0;
@@ -105,7 +106,7 @@ void Strategy::run(float std_devs,int num_prices)
 					temp_sell += total_share_count*current_price;
 					if(temp_buy != 0){
 					//Calculates the return of the transaction.
-					returns.push_back((temp_sell-temp_buy)/temp_buy);
+					returns.push_back(static_cast<float &&>((temp_sell - temp_buy) / temp_buy));
 					}
 					temp_sell = 0;
 					temp_buy = 0;

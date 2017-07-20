@@ -18,7 +18,7 @@ vector<float> Data::read_csv(string filename)
 
 	if(!in.good()){
 		strstream x;
-		x<<"invalid filename: "<<filename;
+		x<<"invalid input filename: "<<filename;
 		__throw_invalid_argument(x.str());
 	}else
 	if(  in)
