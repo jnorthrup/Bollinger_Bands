@@ -80,8 +80,7 @@ void Strategy::buy(int num_shares,float price)
 void Strategy::run(float std_devs,int num_prices)
 	//Runs the trading strategy.
 {
-	string file_path = "C:/Users/Class2016/Downloads/ADS.csv"; //Change this to the appropriate path
-	price_data = read_csv(file_path);
+ 	price_data = read_csv(ifname);
 	signal = 0;
 	auto prev_signal = 0;
 	auto share_count = 0;

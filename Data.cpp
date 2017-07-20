@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <backward/strstream>
 
 using namespace std;
 #include "Data.h"
@@ -14,19 +15,25 @@ vector<float> Data::read_csv(string filename)
 	vector<float> PricesTemp;
 	vector<float> data;
 	ifstream in(filename);
-	if(in)
+
+	if(!in.good()){
+		strstream x;
+		x<<"invalid filename: "<<filename;
+		__throw_invalid_argument(x.str());
+	}else
+	if(  in)
 	{
 		string line;
 		while(getline(in,line))
 		{
-			PricesTemp.push_back(stod(line));
+			PricesTemp.push_back(static_cast<float &&>(stod(line)));
 		}
 	}
 	in.close();
-    auto count = static_cast<int>(PricesTemp.size() - 1);
-	for( int i=count; i >= 0; i--)
+
+	for( auto item:PricesTemp)
 	{
-		data.push_back(PricesTemp.at(i));
+		data.push_back(item);
 	}
 
 	return data;

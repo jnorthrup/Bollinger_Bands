@@ -6,6 +6,10 @@ using namespace std;
 class Strategy: public Data //Inherits the data class
 {
 public:
+Strategy(const string&ifn ) :ifname(ifn){
+
+}
+
 	void run(float std_devs, int num_prices); //Runs the trading strategy
 protected:
 	float avg(vector<float> prices); //Finds the average of a vector of prices
@@ -13,6 +17,7 @@ protected:
 	vector <float> returns;
 	vector <float> sell_prices; //The vector of the prices the algorithm sold at.
 	vector <float> buy_prices; //The vector of the prices the algorithm bought at.
+	string ifname;
 private:
 	vector <float> price_data; //The vector of price data
 	

@@ -7,12 +7,14 @@ using namespace std;
 #include "Strategy.h"
 #include "Performance.h"
 
-int main()
+int main(int argc,const char **argv)
 {
-	Performance P; //Initializes an instance of the Performance class.
-	P.run(2,20); //first parameter is the number of standard deviations for bands. 
-				 //Second parameter is the number of periods in the moving average.
-	cout<< "Sharpe Ratio: " << P.sharpe_ratio() << endl;
-	
-	system("pause");
+    Performance
+            P;
+
+    P= argc > 2 ? Performance(argv[1], argv[2]) : Performance();
+    P.run(2,20); //first parameter is the number of standard deviations for bands.
+    //Second parameter is the number of periods in the moving average.
+    cout<< "Sharpe Ratio: " << P.sharpe_ratio() << endl;
+//	system("pause");
 }
