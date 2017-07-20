@@ -1,17 +1,18 @@
-#include <iostream>
 #include <vector>
-#include "Strategy.h"
-#include <string>
 #include <cmath>
+#include <string>
+#include <iostream>
 using namespace std;
+#include "Data.h"
+#include "Strategy.h"
 
-float Strategy::avg(vector<float> prices)
+using namespace std;
+float Strategy::avg(std::vector<float> prices)
 //Takes in a vector of floats and returns the average of them.
 {
 	float sum = 0;
-	for(int i = 0; i < prices.size(); i++)
-	{
-		sum += prices.at(i);
+	for (float price : prices) {
+		sum += price;
 	}
 	float avg = sum/prices.size();
 	return avg;
@@ -22,9 +23,8 @@ float Strategy::std_dev(vector<float> prices)
 {
 	float mean = avg(prices);
 	float diff_mean = 0;
-	for(unsigned int i = 0; i < prices.size(); i++)
-	{
-		diff_mean += pow(mean-prices.at(i),2);
+	for (float price : prices) {
+		diff_mean += pow(mean- price,2);
 	}
 	float variance = diff_mean/prices.size();
 	return sqrt(variance);
@@ -54,9 +54,8 @@ float Strategy::sum(vector<float> vec)
 	//Sums the components of a vector.
 {
 	float sum = 0;
-	for(unsigned int i = 0; i < vec.size();i++)
-	{
-		sum += vec.at(i);
+	for (float i : vec) {
+		sum += i;
 	}
 	return sum;
 }
@@ -84,12 +83,12 @@ void Strategy::run(float std_devs,int num_prices)
 	string file_path = "C:/Users/Class2016/Downloads/ADS.csv"; //Change this to the appropriate path
 	price_data = read_csv(file_path);
 	signal = 0;
-	int prev_signal = 0;
-	int share_count = 0;
-	int total_share_count = 0;
-	float band_diff = 0.0;
-	float temp_buy = 0.0;
-	float temp_sell = 0.0;
+	auto prev_signal = 0;
+	auto share_count = 0;
+	auto total_share_count = 0;
+	auto band_diff = 0.0;
+	auto temp_buy = 0.0;
+	auto temp_sell = 0.0;
 	for(int index = num_prices + 1; index < price_data.size(); index++)
 		//Iterates through all of the data. This is the main loop in our strategy.
 	{
@@ -156,8 +155,7 @@ void Strategy::run(float std_devs,int num_prices)
 					}
 					temp_sell = 0;
 					temp_buy = 0;
-				}
-				if(prev_signal == -1)
+				}				if(prev_signal == -1)
 					//If you were above the band in the previous period, liquidate position.
 				{
 					buy(total_share_count,current_price);

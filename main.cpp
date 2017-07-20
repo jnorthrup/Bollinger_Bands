@@ -1,7 +1,11 @@
-#include <iostream>
 #include <vector>
-#include "Performance.h"
+#include <cmath>
+#include <string>
+#include <iostream>
 using namespace std;
+#include "Data.h"
+#include "Strategy.h"
+#include "Performance.h"
 
 int main()
 {

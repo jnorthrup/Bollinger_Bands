@@ -1,8 +1,9 @@
-#include "Strategy.h"
+
 class Performance: public Strategy
 {
 public:
 	Performance();
+
 	float sharpe_ratio(); //Calculates the Sharpe ratio based on the returns vector.
 	
 private:

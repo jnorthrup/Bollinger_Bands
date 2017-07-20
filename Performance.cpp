@@ -1,20 +1,24 @@
-#include "Performance.h"
-#include <ostream>
 
-Performance::Performance()
-{
-}
+#include <vector>
+#include <string>
+#include <fstream>
+#include <iostream>
+
+using namespace   std;
+#include "Data.h"
+#include "Strategy.h"
+#include "Performance.h"
+
+Performance::Performance() = default;
 
 void Performance::write_file(vector<vector<float>> input_vec, string filename)
 	//Writes a vector of floats into a .txt file. Values separated by \n.
 {
 	ofstream outputFile;
 	outputFile.open(filename);
-	for(int i = 0;i < input_vec.size();i++)
-	{
-		for(int j = 0; j < input_vec[i].size();j++)
-		{
-			outputFile << input_vec[i].at(j);
+	for (auto &i : input_vec) {
+		for (float j : i) {
+			outputFile << j;
 			outputFile << '\n';
 		}
 	}
@@ -24,11 +28,10 @@ float Performance::sharpe_ratio()
 	//Calculates the Sharpe Ratio for the simulation.
 {
 	vector<float> risk_free_data = read_csv("C:/Users/Class2016/Downloads/RiskFree.csv");
-	for(int i = 0;i<risk_free_data.size();i++)
-	{
-		if(risk_free_data.at(i) > 1)
+	for (float i : risk_free_data) {
+		if(i > 1)
 		{
-			cout<< risk_free_data.at(i) << endl;
+			cout<< i << endl;
 		}
 	}
 	risk_free = avg(risk_free_data);

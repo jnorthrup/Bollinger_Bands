@@ -1,8 +1,6 @@
-#ifndef STRATEGY_H
-#define STRATEGY_H
-#include <iostream>
-#include <vector>
-#include "Data.h"
+#pragma once
+
+
 using namespace std;
 
 class Strategy: public Data //Inherits the data class
@@ -36,4 +34,3 @@ private:
 	void bands(vector<float> prices, float standard_devs); //Defines the bands from a vector of prices
 };
 
-#endif
